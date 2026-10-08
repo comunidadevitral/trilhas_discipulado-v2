@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { stations } from '../data/stations';
+import StationCard from '../components/StationCard.astro';
+---
+<BaseLayout
+  title="A Jornada do Discípulo — Comunidade Vitral"
+  description="Uma caminhada passo a passo que te aproxima de Deus e dos outros."
+>
+  <fragment slot="head">
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Comunidade Vitral — IPIB São José do Rio Preto",
+        "url": "https://trilhas-discipulado.pages.dev",
+      })}
+    </script>
+  </fragment>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">🧭 Hub de Trilhas · Discipulado</span>
+      <p class="hero-destino">DISCÍPULO</p>
+      <p class="hero-frase">“Esteja com Jesus, Torne-se como Ele, Faça como Ele fez.”</p>
+      <p class="hero-formula">SER + FAZER + SABER</p>
+      <p class="hero-iconos" aria-hidden="true">❤️ + 🖐️ + 🧠</p>
+      <a href="#trilhas" class="btn btn-hero">Começar a caminhada</a>
+      <h1>A Jornada do Discípulo</h1>
+      <p class="hero-subtitle">
+        Uma caminhada passo a passo que te aproxima de Deus e dos outros — e você não caminha sozinho.
+      </p>
+    </div>
+  </section>
+
+  <!-- Estações -->
+  <section id="trilhas" class="jornada" aria-labelledby="jornada-titulo">
+    <div class="container jornada-inner">
+      <h2 class="visually-hidden">As três estações da jornada</h2>
+
+      <article class="estacao" data-etapa="1">
+        <div class="estacao-card">
+          <div class="estacao-topo">
+            <span class="estacao-icono" aria-hidden="true">🌱</span>
+            <span class="estacao-badges">
+              <span class="etiqueta etiqueta-etapa">Estação 1</span>
+              <span class="etiqueta etiqueta-papel">FILHO</span>
+            </span>
+          </div>
+          <h3>Trilha de Novos</h3>
+          <p class="estacao-sub">9 passos · Identidade e Pertencimento</p>
+          <p class="estacao-papel">FILHO — alguém que sabe quem é em Deus</p>
+          <p class="estacao-pergunta"><strong>Quem sou eu?</strong> — Descubra quem você é em Deus e qual é o seu lugar na comunidade.</p>
+          <span class="estacao-pilar"><span aria-hidden="true">❤️</span> SER</span>
+          <span class="estacao-acoes">
+            <a class="estacao-cta" href="https://ismaelmmachado.github.io/trilha_de_novos/index.html" target="_blank" rel="noopener">
+              Acessar Trilha<span class="estacao-link-hint" aria-hidden="true">↗</span>
+            </a>
+          </span>
+        </div>
+      </article>
+
+      <div class="conector" role="presentation" aria-hidden="true">
+        <span class="conector-dot"></span>
+        <span class="conector-linha"></span>
+        <span class="conector-dot"></span>
+      </div>
+
+      <article class="estacao" data-etapa="2">
+        <div class="estacao-card">
+          <div class="estacao-topo">
+            <span class="estacao-icono" aria-hidden="true">🌿</span>
+            <span class="estacao-badges">
+              <span class="etiqueta etiqueta-etapa">Estação 2</span>
+              <span class="etiqueta etiqueta-papel">SERVO</span>
+            </span>
+          </div>
+          <h3>Praticando o Caminho</h3>
+          <p class="estacao-sub">17 passos · Práticas e Caráter</p>
+          <p class="estacao-papel">SERVO — alguém que pratica os caminhos de Jesus</p>
+          <p class="estacao-pergunta"><strong>Como vivo?</strong> — Pratique os caminhos de Jesus no dia a dia, tornando-se como Ele.</p>
+          <span class="estacao-pilar"><span aria-hidden="true">🖐️</span> FAZER</span>
+          <span class="estacao-acoes">
+            <a class="estacao-cta" href="https://ismaelmmachado.github.io/trilha_praticando_o_caminho/index.html" target="_blank" rel="noopener">
+              Acessar Trilha<span class="estacao-link-hint" aria-hidden="true">↗</span>
+            </a>
+          </span>
+        </div>
+      </article>
+
+      <div class="conector" role="presentation" aria-hidden="true">
+        <span class="conector-dot"></span>
+        <span class="conector-linha"></span>
+        <span class="conector-dot"></span>
+      </div>
+
+      <article class="estacao" data-etapa="3">
+        <div class="estacao-card estacao-card-disabled">
+          <div class="estacao-topo">
+            <span class="estacao-icono" aria-hidden="true">🌳</span>
+            <span class="estacao-badges">
+              <span class="etiqueta etiqueta-etapa">Estação 3</span>
+              <span class="etiqueta etiqueta-papel">MORDOMO</span>
+            </span>
+          </div>
+          <h3>Fundamentos da Fé</h3>
+          <p class="estacao-sub">8 passos · Compreensão e Fundamentação</p>
+          <p class="estacao-papel">MORDOMO — alguém que compreende e ensina a fé</p>
+          <p class="estacao-pergunta"><strong>O que creio?</strong> — Compreenda a fé que você professa e prepare-se para ensinar.</p>
+          <span class="estacao-pilar"><span aria-hidden="true">🧠</span> SABER</span>
+          <span class="estacao-acoes">
+            <span class="estacao-cta estacao-cta-disabled" aria-disabled="true">Em breve</span>
+          </span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <strong>A Jornada do Discípulo</strong>
+          <span>Comunidade Vitral · IPIB São José do Rio Preto</span>
+        </div>
+        <div class="footer-links">
+          <span>SER + FAZER + SABER</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="#main" class="back-to-top">↑ Voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

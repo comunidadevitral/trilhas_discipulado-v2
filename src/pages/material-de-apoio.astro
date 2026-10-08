@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import MaterialCard from '../components/MaterialCard.astro';
+import Badge from '../components/Badge.astro';
+
+const materiais = await getCollection('materiais');
+---
+
+<BaseLayout
+  title="Material de Apoio — A Jornada do Discípulo"
+  description="Recursos e conteúdos complementares para a sua caminhada de discipulado."
+>
+  <fragment slot="head">
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Material de Apoio",
+        "url": "https://trilhas-discipulado.pages.dev/material-de-apoio",
+      })}
+    </script>
+  </fragment>
+
+  <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-text-main-light);">Material de Apoio</h1>
+    <p class="mb-10" style="color: var(--color-text-muted);">Guias, leituras e recursos para estudo individual ou em grupo.</p>
+
+    <div class="grid gap-6">
+      {/* Categories */}
+      {[ 
+        'Livros Recomendados',
+        'Podcasts',
+        'Músicas',
+        'Guias e Recursos',
+        'Ferramentas para o Caminho',
+      ].map((category) => (
+        <div key={`category-${category}`} class="mb-6">
+          {category === 'Livros Recomendados' && (
+            <>
+              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📚 Livros Recomendados</h2>
+              <div class="apoio-lista grid gap-4">
+                {materiais
+                  .filter(m => m.data.category === 'Livros Recomendados')
+                  .map((entry) => (
+                    <MaterialCard key={entry.id} entry={entry} />
+                  ))}
+              </div>
+            </>
+          )}
+          {category === 'Podcasts' && (
+            <>
+              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">🎧 Podcasts</h2>
+              <div class="apoio-lista grid gap-4">
+                {materiais
+                  .filter(m => m.data.category === 'Podcasts')
+                  .map((entry) => (
+                    <MaterialCard key={entry.id} entry={entry} />
+                  ))}
+              </div>
+            </>
+          )}
+          {category === 'Músicas' && (
+            <>
+              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">🎵 Músicas</h2>
+              <div class="apoio-lista grid gap-4">
+                {materiais
+                  .filter(m => m.data.category === 'Músicas')
+                  .map((entry) => (
+                    <MaterialCard key={entry.id} entry={entry} />
+                  ))}
+              </div>
+            </>
+          )}
+          {category === 'Guias e Recursos' && (
+            <>
+              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📝 Guias e Recursos</h2>
+              <div class="apoio-lista grid gap-4">
+                {materiais
+                  .filter(m => m.data.category === 'Guias e Recursos')
+                  .map((entry) => (
+                    <MaterialCard key={entry.id} entry={entry} />
+                  ))}
+              </div>
+            </>
+          )}
+          {category === 'Ferramentas para o Caminho' && (
+            <>
+              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📱 Ferramentas para o Caminho</h2>
+              <div class="apoio-lista grid gap-4">
+                {materiais
+                  .filter(m => m.data.category === 'Ferramentas para o Caminho')
+                  .map((entry) => (
+                    <MaterialCard key={entry.id} entry={entry} />
+                  ))}
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

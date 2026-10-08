@@ -1,0 +1,18 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline';
+  class?: string;
+}
+
+const { variant = 'primary', class: className = '' } = Astro.props;
+
+const baseClasses = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-colors';
+const variantClasses = {
+  primary: 'bg-gradient-to-r from-[#005F6B] to-[#94A69A] text-white',
+  secondary: 'bg-[var(--color-secondary)]/20 text-[var(--color-secondary)]',
+  outline: 'border border-[var(--color-secondary)] text-[var(--color-secondary)]',
+};
+---
+<span class={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+  <slot />
+</span>

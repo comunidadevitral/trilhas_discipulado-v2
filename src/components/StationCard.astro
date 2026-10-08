@@ -1,0 +1,37 @@
+---
+interface Props {
+  station: import('../../data/stations').Station;
+  class?: string;
+}
+
+const { station, class: className = '' } = Astro.props;
+---
+<a
+  href={station.external ? station.link : '#'}
+  target={station.external ? '_blank' : undefined}
+  rel={station.external ? 'noopener noreferrer' : undefined}
+  aria-disabled={station.status === 'coming_soon' ? 'true' : undefined}
+  class={`
+    block rounded-xl border p-6 transition-all hover:shadow-md focus-visible
+    ${className}
+  `.trim()}
+  style={{
+    background: 'var(--color-surface-light)',
+    borderColor: 'var(--color-secondary)',
+    opacity: station.status === 'coming_soon' ? '0.6' : '1',
+  }}
+>
+  <div class="flex items-center justify-between mb-4">
+    <span class="text-3xl" aria-hidden="true">{station.icon}</span>
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium" style="background: var(--gradient-brand); color: #fff;">
+      {station.status === 'coming_soon' ? 'Em breve' : `${station.stepsCount} passos`}
+    </span>
+  </div>
+  <h3 class="text-xl font-medium mb-1" style="color: var(--color-text-main-light);">Estação {station.number} — {station.name}</h3>
+  <p class="text-sm font-medium mb-2" style="color: var(--color-primary);">{station.title}</p>
+  <p class="text-sm mb-3" style="color: var(--color-text-muted);">{station.subtitle}</p>
+  <p class="text-sm italic" style="color: var(--color-text-muted);">{station.question}</p>
+  {station.external && (
+    <span class="inline-block mt-4 text-xs font-medium underline" style="color: var(--color-primary);">Acessar trilha →</span>
+  )}
+</a>

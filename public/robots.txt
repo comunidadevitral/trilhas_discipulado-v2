@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://trilhas-discipulado.pages.dev/sitemap-index.xml

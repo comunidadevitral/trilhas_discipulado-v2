@@ -1,0 +1,23 @@
+---
+interface Props {
+  entry: import('astro:content').CollectionEntry<'materiais'>;
+}
+---
+<div class="apoio-item bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200 border border-[var(--color-border)]">
+  <div class="apoio-item-info">
+    <h3 class="font-semibold mb-1" style="color: var(--color-text-main-light);">{entry.data.title}</h3>
+    {entry.data.description && (
+      <p class="text-sm text-[var(--color-text-muted)] mb-2">{entry.data.description}</p>
+    )}
+    {entry.data.downloadUrl && (
+      <a
+        href={entry.data.downloadUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="apoio-link inline-block px-3 py-1 rounded-full text-xs font-medium bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary)]/90"
+      >
+        Baixar
+      </a>
+    )}
+  </div>
+</div>

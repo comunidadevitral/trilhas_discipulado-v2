@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const rciEntries = await getCollection('rci');
+---
+
+<BaseLayout
+  title="R.C.I. — Relacionamento, Cuidado e Impacto"
+  description="Estrutura de Relacionamento, Cuidado e Impacto para pequenos grupos e discipulado."
+>
+  <fragment slot="head">
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "R.C.I.",
+        "url": "https://trilhas-discipulado.pages.dev/rci",
+      })}
+    </script>
+  </fragment>
+
+  <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-text-main-light);">R.C.I.</h1>
+    <p class="text-lg mb-2 font-medium" style="color: var(--color-primary);">Relacionamento · Cuidado · Impacto</p>
+    <p class="mb-10" style="color: var(--color-text-muted);">Metodologia da Comunidade Vitral para pequenos grupos e discipulado.</p>
+
+    {/* Hero intro */}
+    <div class="mb-8 p-6 rounded-xl border" style="background: var(--color-surface-light); border-color: var(--color-secondary);">
+      <p class="mb-4" style="color: var(--color-text-main-light);">
+        Este guia é um recurso prático para você aplicar o conceito de <strong>RCI — Rede de Relacionamentos Informais</strong> no seu dia a dia. Ele não substitui o Mapa da Trilha, mas o complementa, ajudando você a viver a missão de forma natural e sustentável.
+      </p>
+      <blockquote class="border-l-4 pl-4" style="border-color: var(--color-primary);">
+        <p class="mb-0" style="color: var(--color-text-muted);"><strong>Lembre-se:</strong> Seu papel é de anfitrião e companheiro de caminhada. Você não está aqui para modelar um jeito de viver a fé que se espalha através de relacionamentos genuínos.</p>
+      </blockquote>
+    </div>
+
+    {/* Render sections ordered by section number */}
+    {rciEntries
+      .sort((a, b) => a.data.section - b.data.section)
+      .map((entry: any) => (
+        <section key={entry.id} class="rci-section mb-8" aria-labelledby={`sec${entry.data.section}`}>
+          <h2 id={`sec${entry.data.section}`} class="text-2xl font-semibold mb-4" style="color: var(--color-text-main-light);">
+            {entry.data.section}. {entry.data.title}
+          </h2>
+          <div class="prose prose-sm max-w-none" style="color: var(--color-text-main-light);">
+            {entry.body}
+          </div>
+        </section>
+      ))}
+  </section>
+</BaseLayout>
