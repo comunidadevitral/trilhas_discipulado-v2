@@ -1,103 +1,122 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import MaterialCard from '../components/MaterialCard.astro';
-import Badge from '../components/Badge.astro';
-
-const materiais = await getCollection('materiais');
 ---
-
 <BaseLayout
-  title="Material de Apoio — A Jornada do Discípulo"
-  description="Recursos e conteúdos complementares para a sua caminhada de discipulado."
+  title="Material de Apoio · A Jornada do Discípulo"
+  description="Materiais de apoio para aprofundar os temas da Jornada do Discípulo na Comunidade Vitral."
 >
-  <fragment slot="head">
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Material de Apoio",
-        "url": "https://trilhas-discipulado.pages.dev/material-de-apoio",
-      })}
-    </script>
-  </fragment>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Início</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Material de Apoio</span>
+    </nav>
+  </div>
 
-  <section class="max-w-[1200px] mx-auto px-4 md:px-8 py-16">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-text-main-light);">Material de Apoio</h1>
-    <p class="mb-10" style="color: var(--color-text-muted);">Guias, leituras e recursos para estudo individual ou em grupo.</p>
+  <main id="main">
+    <div class="container apoio-main">
+      <div class="page-header apoio-header">
+        <h1>Material de Apoio</h1>
+        <p class="apoio-subtitle">Recursos adicionais para aprofundar sua jornada na Jornada do Discípulo.</p>
+      </div>
 
-    <div class="grid gap-6">
-      {/* Categories */}
-      {[ 
-        'Livros Recomendados',
-        'Podcasts',
-        'Músicas',
-        'Guias e Recursos',
-        'Ferramentas para o Caminho',
-      ].map((category) => (
-        <div key={`category-${category}`} class="mb-6">
-          {category === 'Livros Recomendados' && (
-            <>
-              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📚 Livros Recomendados</h2>
-              <div class="apoio-lista grid gap-4">
-                {materiais
-                  .filter(m => m.data.category === 'Livros Recomendados')
-                  .map((entry) => (
-                    <MaterialCard key={entry.id} entry={entry} />
-                  ))}
+      <div class="apoio-grid">
+        <a href="https://panorama-biblico.comunidadevitral.workers.dev/" class="card-destaque" target="_blank" rel="noopener noreferrer">
+          <span class="icone">📖</span>
+          <h3>Panorama Bíblico</h3>
+          <p>Visões gerais animadas de cada livro da Bíblia, em parceria com o BibleProject.</p>
+          <span class="cta">Explorar panoramas →</span>
+        </a>
+
+        <div class="apoio-categoria">
+          <h2>📚 Livros Recomendados</h2>
+          <div class="apoio-lista">
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>O Deus que se Importa</strong>
+                <span>Autor a definir · Teologia do cuidado de Deus</span>
               </div>
-            </>
-          )}
-          {category === 'Podcasts' && (
-            <>
-              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">🎧 Podcasts</h2>
-              <div class="apoio-lista grid gap-4">
-                {materiais
-                  .filter(m => m.data.category === 'Podcasts')
-                  .map((entry) => (
-                    <MaterialCard key={entry.id} entry={entry} />
-                  ))}
+              <span class="apoio-link apoio-em-breve">Em breve</span>
+            </div>
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Discipulado: O Caminho do Seguidor de Cristo</strong>
+                <span>Autor a definir · Fundamentos do discipulado</span>
               </div>
-            </>
-          )}
-          {category === 'Músicas' && (
-            <>
-              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">🎵 Músicas</h2>
-              <div class="apoio-lista grid gap-4">
-                {materiais
-                  .filter(m => m.data.category === 'Músicas')
-                  .map((entry) => (
-                    <MaterialCard key={entry.id} entry={entry} />
-                  ))}
-              </div>
-            </>
-          )}
-          {category === 'Guias e Recursos' && (
-            <>
-              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📝 Guias e Recursos</h2>
-              <div class="apoio-lista grid gap-4">
-                {materiais
-                  .filter(m => m.data.category === 'Guias e Recursos')
-                  .map((entry) => (
-                    <MaterialCard key={entry.id} entry={entry} />
-                  ))}
-              </div>
-            </>
-          )}
-          {category === 'Ferramentas para o Caminho' && (
-            <>
-              <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-main-light);">📱 Ferramentas para o Caminho</h2>
-              <div class="apoio-lista grid gap-4">
-                {materiais
-                  .filter(m => m.data.category === 'Ferramentas para o Caminho')
-                  .map((entry) => (
-                    <MaterialCard key={entry.id} entry={entry} />
-                  ))}
-              </div>
-            </>
-          )}
+              <span class="apoio-link apoio-em-breve">Em breve</span>
+            </div>
+          </div>
         </div>
-      ))}
+
+        <div class="apoio-categoria">
+          <h2>🎧 Podcasts</h2>
+          <div class="apoio-lista">
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Praticando o Caminho</strong>
+                <span>Podcast oficial da jornada · Episódios semanais</span>
+              </div>
+              <span class="apoio-link apoio-em-breve">Em breve</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="apoio-categoria">
+          <h2>🎵 Músicas</h2>
+          <div class="apoio-lista">
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Playlists da Jornada</strong>
+                <span>Músicas que acompanham cada etapa do discipulado</span>
+              </div>
+              <span class="apoio-link apoio-em-breve">Em breve</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="apoio-categoria">
+          <h2>📝 Guias e Recursos</h2>
+          <div class="apoio-lista">
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Diário de Bordo da Jornada</strong>
+                <span>PDF para download · Acompanhe seu progresso</span>
+              </div>
+              <span class="apoio-link apoio-em-breve">Em breve</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="apoio-categoria">
+          <h2>📱 Ferramentas para o Caminho</h2>
+          <div class="apoio-lista">
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Bible App (YouVersion)</strong>
+                <span>A Bíblia no seu bolso, com centenas de versões, planos de leitura e devocionais. Siga a Comunidade Vitral e caminhe com outros aprendizes. 100% gratuito, sem anúncios.</span>
+              </div>
+              <a class="apoio-link" href="https://www.bible.com/organizations/79172d03-a943-4051-aebf-285b525546f1" target="_blank" rel="noopener noreferrer">Baixar</a>
+            </div>
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Lectio 365</strong>
+                <span>Um devocional diário em português que convida você a fazer uma pausa na presença de Deus. Ore com a Bíblia pela manhã, ao meio-dia e à noite. Leia ou ouça — onde estiver. Gratuito, criado pelo movimento 24-7 Prayer.</span>
+              </div>
+              <a class="apoio-link" href="https://lectio365.com/pt-br/o-aplicativo/" target="_blank" rel="noopener noreferrer">Baixar</a>
+            </div>
+            <div class="apoio-item">
+              <div class="apoio-item-info">
+                <strong>Canal Spotify da Comunidade Vitral</strong>
+                <span>Aperte o play e venha caminhar conosco. Mensagens, reflexões e conversas para ouvir no caminho do trabalho, em casa ou naquela pausa do dia.</span>
+              </div>
+              <div class="apoio-acoes">
+                <a class="apoio-link" href="https://open.spotify.com/show/1prjsrcxPho9otrP1VUWT4" target="_blank" rel="noopener noreferrer">Ouvir</a>
+                <a class="apoio-link is-secondary" href="https://www.spotify.com/download/" target="_blank" rel="noopener noreferrer">Baixar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </main>
 </BaseLayout>

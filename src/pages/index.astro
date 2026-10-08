@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { stations } from '../data/stations';
-import StationCard from '../components/StationCard.astro';
 ---
 <BaseLayout
   title="A Jornada do Discípulo — Comunidade Vitral"
@@ -37,7 +35,7 @@ import StationCard from '../components/StationCard.astro';
   <!-- Estações -->
   <section id="trilhas" class="jornada" aria-labelledby="jornada-titulo">
     <div class="container jornada-inner">
-      <h2 class="visually-hidden">As três estações da jornada</h2>
+      <h2 id="jornada-titulo" class="visually-hidden">As três estações da jornada</h2>
 
       <article class="estacao" data-etapa="1">
         <div class="estacao-card">
@@ -114,23 +112,12 @@ import StationCard from '../components/StationCard.astro';
           </span>
         </div>
       </article>
+
+      <div class="conector" role="presentation" aria-hidden="true">
+        <span class="conector-dot"></span>
+        <span class="conector-linha"></span>
+        <span class="conector-dot"></span>
+      </div>
     </div>
   </section>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-about">
-          <strong>A Jornada do Discípulo</strong>
-          <span>Comunidade Vitral · IPIB São José do Rio Preto</span>
-        </div>
-        <div class="footer-links">
-          <span>SER + FAZER + SABER</span>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <a href="#main" class="back-to-top">↑ Voltar ao topo</a>
-      </div>
-    </div>
-  </footer>
 </BaseLayout>
