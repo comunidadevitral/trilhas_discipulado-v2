@@ -20,8 +20,11 @@
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
-    const sun = toggle.querySelector('.sun-icon');
-    const moon = toggle.querySelector('.moon-icon');
+    const sunEl = toggle.querySelector('.sun-icon');
+    const moonEl = toggle.querySelector('.moon-icon');
+    if (!sunEl || !moonEl) return;
+    const sun = sunEl;
+    const moon = moonEl;
 
     function updateIcons() {
       const isDark = document.documentElement.classList.contains('dark');

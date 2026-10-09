@@ -2,6 +2,8 @@
 interface Props {
   entry: import('astro:content').CollectionEntry<'materiais'>;
 }
+
+const { entry } = Astro.props;
 ---
 <div class="apoio-item bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-200 border border-[var(--color-border)]">
   <div class="apoio-item-info">

@@ -1,0 +1,27 @@
+
+> v2@0.0.1 dev
+> astro dev
+
+[vite] connected.
+09:04:25 [types] Generated 0ms
+[vite] connected.
+09:04:25 [content] Syncing content
+09:04:25 [content] Astro config changed
+09:04:25 [content] Astro version changed
+09:04:25 [content] Clearing content store
+09:04:25 [content] Synced content
+09:04:25 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v6.4.8 ready in 1223 ms
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+09:04:25 watching for file changes...
+▶ Vite 8.3.3 detected in your project.
+  Astro requires Vite 7. Add "overrides": { "vite": "^7" } to your package.json to avoid issues.
+
+09:04:32 [200] / 23ms
+09:04:32 [200] / 23ms
+09:04:37 [200] / 3ms
+09:07:01 [200] / 17ms
+09:07:10 [200] / 2ms
+09:07:11 [200] / 3ms
+09:07:33 [200] / 2ms
