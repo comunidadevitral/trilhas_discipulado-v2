@@ -39,19 +39,20 @@ const { title, description, ogImage = '/images/og-home.jpg', canonical = Astro.u
     <!-- Fonte Montserrat como no original -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script is:inline>
+    <script is:inline lang="ts">
       /**
-       * @param {Event} e
+       * @param {Event | undefined} e
        */
       function handleFontLoad(e) {
-        const link = e.currentTarget;
+        const link = e?.currentTarget;
         if (link && link instanceof HTMLLinkElement) {
           link.media = 'all';
         }
       }
+      // Make it globally accessible for the onload attribute
+      globalThis.handleFontLoad = handleFontLoad;
     </script>
-    <!-- @ts-ignore: event is possibly undefined and deprecated -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" media="print" onload="handleFontLoad(event)">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" media="print" onload="handleFontLoad">
 
     <slot name="head" />
   </head>
